@@ -1,0 +1,19 @@
+{
+  "Brno": [
+    {
+      "name": "Veroni",
+      "parser": "menickacz",
+      "url": "https://www.menicka.cz/4921-veroni-coffee--chocolate.html"
+    },
+    {
+      "name": "U Capa",
+      "parser": "ucapa",
+      "url": "https://www.pivnice-ucapa.cz/denni-menu.php"
+    },
+    {
+      "name": "Suzeis steak house",
+      "parser": "suzies",
+      "url": "https://www.suzies.cz/poledni-menu"
+    }
+  ]
+}
