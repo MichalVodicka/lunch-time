@@ -1,7 +1,7 @@
 # lunch-time
 get lunch menu from your favorite restaurants
 
-##How to use it
+## How to use it
 ```
 npm i
 npm run start
