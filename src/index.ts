@@ -14,7 +14,7 @@ const downloadedPages = restaurants.Brno.map(restaurant => {
     return new Promise<Restaurant>((resolve,reject) => {
         const timeoutHandle = setTimeout(()=>reject(`TIMEOUT: ${restaurant.url}`),timeOutMS)
 
-        https.get(restaurant.url+'ddd', res => {
+        https.get(restaurant.url, res => {
             let converter = null
             // unfortunately not every page is encoded in UTF-8
             if(res.statusCode===200) {
