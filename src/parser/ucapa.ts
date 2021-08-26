@@ -26,11 +26,17 @@ export const ucapa:Parser = (htmlAsString)=>{
     }
 
     menu.soups = selectedMenu.querySelectorAll(".row-polevka").map(soup=>{
-        return soup?soup.textContent.trim():null
+        return {
+            name:soup?soup.textContent.trim():null,
+            price: NaN
+        }
     })
 
     menu.dishes = selectedMenu.querySelectorAll(".row-food").map(dish=>{
-        return dish.querySelector('.food')?dish.querySelector('.food').textContent.trim():null
+        return {
+            name:dish.querySelector('.food')?dish.querySelector('.food').textContent.trim():null,
+            price:dish.querySelector('.price')?parseInt(dish.querySelector('.price').textContent.trim()):NaN
+        }
     })
 
     return menu

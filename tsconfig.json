@@ -1,5 +1,4 @@
 {
-
   "compilerOptions": {
     "moduleResolution": "Node",
     "outDir": "dist",

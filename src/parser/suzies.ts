@@ -6,7 +6,7 @@ import {Parser} from "../types";
 
 export const suzies:Parser = (htmlAsString)=>{
     const root = parse(htmlAsString);
-    let menicka = root.querySelector('#food-grid').querySelectorAll('.item')
+    let menicka = root.querySelector('div#food-grid').querySelectorAll('.item')
 
     const menu = {
         soups:[],
@@ -25,8 +25,13 @@ export const suzies:Parser = (htmlAsString)=>{
         return title.textContent.trim()
     })
 
-    const allMeals = selectedMenu.querySelectorAll("div.uk-width-expand").map(title=> {
-        return title.lastChild.innerText.trim()
+
+    const allMeals = selectedMenu.querySelectorAll("div.uk-grid-small, div.uk-grid")
+        .map(title=> {
+            return {
+                name:title.querySelector("div.uk-width-expand").lastChild.textContent.trim(),
+                price:title.querySelector("div.price")?parseInt(title.querySelector("div.price").textContent.trim()):NaN
+            }
     })
 
     if(!selectedMenu){

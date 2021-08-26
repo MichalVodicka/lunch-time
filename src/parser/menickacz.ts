@@ -23,11 +23,17 @@ export const menickacz:Parser = (htmlAsString)=>{
     }
 
     menu.soups = selectedMenu.querySelectorAll(".polevka").map(soup=>{
-        return soup.querySelector('.polozka')?soup.querySelector('.polozka').textContent:null
+        return {
+            name:soup.querySelector('.polozka')?soup.querySelector('.polozka').textContent:null,
+            price:soup.querySelector('.cena')?parseInt(soup.querySelector('.cena').textContent):NaN
+        }
     })
 
     menu.dishes = selectedMenu.querySelectorAll(".jidlo").map(dish=>{
-        return dish.querySelector('.polozka')?dish.querySelector('.polozka').textContent:null
+        return {
+            name:dish.querySelector('.polozka')?dish.querySelector('.polozka').textContent:null,
+            price:dish.querySelector('.polozka')?parseInt(dish.querySelector('.cena').textContent):NaN
+        }
     })
 
     return menu

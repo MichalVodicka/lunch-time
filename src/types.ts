@@ -1,7 +1,13 @@
 export type ProcessedMenu = {
-    soups:string[],
-    dishes:string[]
+    soups:Meal[],
+    dishes:Meal[]
 }
+
+type Meal = {
+    name:string
+    price:number
+}
+
 export type Parser = (html:string)=>ProcessedMenu
 
 export type Restaurant = {
