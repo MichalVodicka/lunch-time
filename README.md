@@ -8,7 +8,9 @@ should work with lower version of Node - but not tested
 
 ## How to use it
 ```
-npm i
+git clone git@github.com:MichalVodicka/lunch-time.git
+cd lunch-time
+npm ci
 npm run start
 ```
 ## TODO
