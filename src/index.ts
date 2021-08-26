@@ -12,22 +12,30 @@ const timeOutMS=1000;
  */
 const downloadedPages = restaurants.Brno.map(restaurant => {
     return new Promise<Restaurant>((resolve,reject) => {
-        const timeoutHandle = setTimeout(reject,timeOutMS)
-        https.get(restaurant.url, res => {
+        const timeoutHandle = setTimeout(()=>reject(`TIMEOUT: ${restaurant.url}`),timeOutMS)
 
+        https.get(restaurant.url+'ddd', res => {
+            let converter = null
             // unfortunately not every page is encoded in UTF-8
-            const getCharset = /\bcharset=\b(.*)/
-            const charset = res.headers["content-type"].match(getCharset)[1] ?? // index 0 is whole string
-                defaultCharset  // if there is no charset use default
-            const converter = defaultCharset !== charset ? new Iconv(charset, defaultCharset) : null
-
+            if(res.statusCode===200) {
+                const getCharset = /\bcharset=\b(.*)/
+                const charset = res.headers["content-type"].match(getCharset)[1] ?? // index 0 is whole string
+                    defaultCharset  // if there is no charset use default
+                converter = defaultCharset !== charset ? new Iconv(charset, defaultCharset) : converter
+            }
             let data = ""
             res.on('data', d => {
                 // convert between page charset and default charset if needed
                 data += converter ? converter.convert(d) : d
             })
+
+            // handle network issues
+            .on('error', err =>{
+                throw err
+            })
+
             // once finished reading - resolve the promise
-            res.on('end', function () {
+            .on('end', function () {
                 clearTimeout(timeoutHandle)
                 resolve({
                     name:restaurant.name,
