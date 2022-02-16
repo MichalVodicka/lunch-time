@@ -27,7 +27,7 @@
   "homepage": "https://github.com/MichalVodicka/lunch-time#readme",
   "dependencies": {
     "iconv": "^3.0.0",
-    "node-html-parser": "^4.1.3",
+    "node-html-parser": "^5.0.0",
     "typescript": "^4.3.5"
   },
   "devDependencies": {
